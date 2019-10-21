@@ -1,0 +1,30 @@
+﻿<Window x:Class="DecipheringHelp.BindingTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DecipheringHelp"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="BindingTest" Height="300" Width="300">
+    <Grid Margin="0,0,0,0">
+        <StackPanel>
+            <RadioButton Name="first_rabtn" GroupName=" radiogroup1"></RadioButton>
+            <RadioButton  GroupName=" radiogroup1"></RadioButton>
+            <TextBox IsEnabled="{Binding ElementName=first_rabtn,Path=IsChecked}"></TextBox>
+            <Button Click="Button_Click" Height="30"></Button>
+            <Canvas Name="canvas1">
+                <Canvas.Resources>
+                    <local:NumberOfPlayers x:Key="numberOfPlayers" >
+                        <sys:Int32>1</sys:Int32>
+                        <sys:Int32>2</sys:Int32>
+                        <sys:Int32>3</sys:Int32>
+                    </local:NumberOfPlayers>
+                </Canvas.Resources>
+                <ComboBox ItemsSource="{Binding Source={StaticResource numberOfPlayers}}">
+
+                </ComboBox>
+            </Canvas>
+        </StackPanel>
+    </Grid>
+</Window>
